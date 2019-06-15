@@ -12,3 +12,15 @@ def get_all_for_word(word):
         item["language_name"] = lang.display_name
     return jsonify({"data": data})
 
+
+@mod_translations.route("/", methods=["GET"])
+def get_possible_words():
+    query = request.args.get("q")
+    translations = None
+    if query:
+        query = query.replace("*", "%")
+        translations = Translation.query.filter(Translation.en_word.ilike(query)).all()
+    else:
+        translations = Translation.query.all()
+    en_words = list(set(map(lambda t: t.en_word, translations)))
+    return jsonify({"data": en_words})

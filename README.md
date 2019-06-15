@@ -5,6 +5,7 @@ Simple scraper / dictionary app with an intuitive interface.
 ## Endpoints
 
 - `/api/translations/<word>`: get all the translations in all languages for a word
+- `/api/translations?q=so*`: get all english words that can be used. You can search through them by using a * operator. Or something like `q=*o*`
 
 ## Developing
 
