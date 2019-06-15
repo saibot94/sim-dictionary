@@ -26,3 +26,16 @@ To run:
 ```bash
 FLASK_DEBUG=1 FLASK_APP="run.py" flask run --host 0.0.0.0
 ```
+
+To add a new crawler:
+
+- in the crawlers module add a `<language>_crawler.py` file, which contains the crawler itself. 
+- in `__init__.py` follow the example: ``
+
+## Populating with data
+
+To populate the DB for a language based on the seed data:
+
+```bash
+python crawler_cli.py --name "Romanian"
+```

@@ -17,7 +17,7 @@ ma = Marshmallow(app)
 # Sample HTTP error handling
 @app.errorhandler(404)
 def not_found(error):
-    return "This page does not exist!"
+    return jsonify({"error": "Not found"})
 
 
 # Import a module / component using its blueprint handler variable (mod_auth)
@@ -28,4 +28,6 @@ app.register_blueprint(translations)
 
 # Build the database:
 # This will create the database file using SQLAlchemy
+from sim_dict.models import *
 db.create_all()
+seed_data()
