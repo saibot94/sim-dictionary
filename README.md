@@ -47,7 +47,7 @@ To populate the DB for a language based on the seed data:
 python src/crawler_cli.py --name "Romanian"
 ```
 
-or on Windows:
+or on Windows: 
 
 ```powershell
 python .\src\crawler_cli.py --name "Romanian"
