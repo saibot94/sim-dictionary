@@ -35,7 +35,7 @@ class LanguageSchema(ma.ModelSchema):
 translation_schema = TranslationSchema()
 lang_schema = LanguageSchema()
 
-SEED_LANGUAGES = [Language(id=1, display_name="Romanian", crawler="romanian_crawler")]
+SEED_LANGUAGES = [Language(id=1, display_name="Romanian", crawler="romanian_crawler"), Language(id=2, display_name="Polish", crawler="polish_crawler")]
 
 
 def seed_data():

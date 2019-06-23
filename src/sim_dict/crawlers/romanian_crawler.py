@@ -1,10 +1,11 @@
 import requests
+from urllib.parse import urlencode
 from bs4 import BeautifulSoup
 from bs4.element import NavigableString
 from sim_dict.crawlers import Crawler
 import logging
 
-API_ROOT = "http://dictionare.com/enro40.php?field0={}"
+API_ROOT = "http://dictionare.com/enro40.php?{}"
 
 
 class RomanianCrawler(Crawler):
@@ -16,7 +17,7 @@ class RomanianCrawler(Crawler):
         """
         Gets a word's definition from dictionare.com
         """
-        url = API_ROOT.format(word)
+        url = API_ROOT.format(urlencode({"field0": word}))
         soup = BeautifulSoup(requests.get(url).text, "html.parser")
         centers = soup.find_all("center")
         if len(centers) != 7:

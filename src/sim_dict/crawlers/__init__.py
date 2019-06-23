@@ -15,3 +15,4 @@ class Crawler:
 
 
 from sim_dict.crawlers.romanian_crawler import crawler as romanian_crawler
+from sim_dict.crawlers.polish_crawler import crawler as polish_crawler
