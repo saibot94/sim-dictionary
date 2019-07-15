@@ -2,6 +2,7 @@ language: python
 python:
   - "3.6"
 install:
-  - make init
+  - pip install pipenv
+  - pipenv install
 script:
-  - make test
+  - pipenv run py.test src/tests
