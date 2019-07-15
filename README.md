@@ -41,14 +41,29 @@ To add a new crawler:
 
 ## Populating with data
 
+Use the `crawler_cli.py` script in the src folder:
+
+```text
+usage: crawler_cli [-h] [--crawlers CRAWLERS] name
+
+Seed things as fast as possible using this simple tool
+
+positional arguments:
+  name                 The name of the language
+
+optional arguments:
+  -h, --help           show this help message and exit
+  --crawlers CRAWLERS  Module from where the crawlers should be loaded
+```
+
 To populate the DB for a language based on the seed data:
 
 ```bash
-python src/crawler_cli.py --name "Romanian"
+python src/crawler_cli.py "Romanian"
 ```
 
 or on Windows: 
 
 ```powershell
-python .\src\crawler_cli.py --name "Romanian"
+python .\src\crawler_cli.py "Romanian"
 ```
