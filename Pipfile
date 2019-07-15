@@ -19,6 +19,8 @@ requests = "*"
 beautifulsoup4 = "*"
 wiktionaryparser = "*"
 click = "*"
+gunicorn = "*"
+psycopg2 = "*"
 
 [pipenv]
 allow_prereleases = true

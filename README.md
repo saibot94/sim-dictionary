@@ -27,13 +27,13 @@ pipenv install
 To run:
 
 ```bash
-FLASK_DEBUG=1 FLASK_APP="src/run.py" flask run --host 0.0.0.0
+FLASK_DEBUG=1 FLASK_APP="run.py" flask run --host 0.0.0.0
 ```
 
 To run on windows (powershell):
 
 ```powershell
- $env:FLASK_DEBUG=1; $env:FLASK_APP="src/run.py"; flask run
+ $env:FLASK_DEBUG=1; $env:FLASK_APP="run.py"; flask run
  ```
 
 To add a new crawler:
@@ -43,7 +43,7 @@ To add a new crawler:
 
 ## Populating with data
 
-Use the `crawler_cli.py` script in the src folder:
+Use the `crawler_cli.py` script in the root folder:
 
 ```text
 usage: crawler_cli [-h] [--crawlers CRAWLERS] name
@@ -61,11 +61,11 @@ optional arguments:
 To populate the DB for a language based on the seed data:
 
 ```bash
-python src/crawler_cli.py "Romanian"
+python crawler_cli.py "Romanian"
 ```
 
 or on Windows: 
 
 ```powershell
-python .\src\crawler_cli.py "Romanian"
+python .\crawler_cli.py "Romanian"
 ```
