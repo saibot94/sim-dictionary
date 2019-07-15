@@ -1,5 +1,7 @@
 # Similarity dictionary
 
+[![Build Status](https://travis-ci.org/saibot94/sim-dictionary.svg?branch=master)](https://travis-ci.org/saibot94/sim-dictionary)
+
 Simple scraper / dictionary app with an intuitive interface.
 
 ## Endpoints
