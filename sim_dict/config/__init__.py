@@ -10,6 +10,8 @@ BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardi
 # Define the database - we are working with
 # SQLite for this example
 SQLALCHEMY_DATABASE_URI = "sqlite:///" + os.path.join(BASE_DIR, "app.db")
+if "DATABASE_URL" in os.environ:
+    SQLALCHEMY_DATABASE_URI = os.environ["DATABASE_URL"]
 DATABASE_CONNECT_OPTIONS = {}
 
 # Enable protection agains *Cross-site Request Forgery (CSRF)*

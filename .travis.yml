@@ -3,6 +3,6 @@ python:
   - "3.6"
 install:
   - pip install pipenv
-  - pipenv install
+  - pipenv install --no-binary
 script:
-  - pipenv run py.test src/tests
+  - pipenv run py.test tests
