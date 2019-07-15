@@ -3,7 +3,7 @@ import importlib
 from sim_dict import db
 from sim_dict.models import Language, Translation
 from sim_dict.constants import SEED_WORDS
-
+import argparse
 
 def populate(crawler, lang):
     for word in SEED_WORDS:
@@ -29,23 +29,21 @@ def populate(crawler, lang):
             print("EX: word: '{}', e: {}".format(word, e))
     db.session.commit()
 
-
-@click.command()
-@click.option("--name", help="Name of the language.", type=str)
-@click.option(
-    "--crawlersmod",
-    help="Module from where to load the crawlers.",
-    type=str,
-    default="sim_dict.crawlers",
-)
-def crawler_cli(name, crawlersmod):
+def crawler_cli():
     """Simple to trigger the crawling of a language."""
-    lang = Language.query.filter_by(display_name=name).first()
+
+    parser = argparse.ArgumentParser("crawler_cli", description="Seed things as fast as possible using this simple tool")
+    parser.add_argument("name", help="The name of the language", type=str)
+    parser.add_argument("--crawlers", help="Module from where the crawlers should be loaded", type=str, default="sim_dict.crawlers")
+
+    args = parser.parse_args()
+
+    lang = Language.query.filter_by(display_name=args.name).first()
     if not lang:
         print("ERROR: Language with this name not found")
         return
 
-    crawlers_module = importlib.import_module(crawlersmod)
+    crawlers_module = importlib.import_module(args.crawlers)
     crawler = getattr(crawlers_module, lang.crawler)
     if not crawler:
         print("ERROR: Crawler '{}' not found".format(lang.crawler))
