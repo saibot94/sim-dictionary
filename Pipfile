@@ -5,9 +5,9 @@ verify_ssl = true
 
 [dev-packages]
 pylint = "*"
-black = "*"
 nose = "*"
 pytest = "*"
+autopep8 = "*"
 
 [packages]
 sqlalchemy = "*"
@@ -21,6 +21,7 @@ wiktionaryparser = "*"
 click = "*"
 gunicorn = "*"
 psycopg2 = "*"
+alembic = "*"
 
 [pipenv]
 allow_prereleases = true

@@ -6,6 +6,7 @@ class Language(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     display_name = db.Column(db.String(), nullable=False)
     crawler = db.Column(db.String(), nullable=False)
+    language_code = db.Column(db.String(), nullable=False, default="Unknown")
 
     def __repr__(self):
         return "<Language {} >".format(self.display_name)
@@ -15,7 +16,8 @@ class Translation(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     en_word = db.Column(db.String(), nullable=False)
     translation = db.Column(db.String(), nullable=False, default="Unknown")
-    language_id = db.Column(db.Integer, db.ForeignKey("language.id"), nullable=True)
+    language_id = db.Column(
+        db.Integer, db.ForeignKey("language.id"), nullable=True)
     language = db.relationship("Language", backref="words")
 
     def __repr__(self):
@@ -35,7 +37,8 @@ class LanguageSchema(ma.ModelSchema):
 translation_schema = TranslationSchema()
 lang_schema = LanguageSchema()
 
-SEED_LANGUAGES = [Language(id=1, display_name="Romanian", crawler="romanian_crawler"), Language(id=2, display_name="Polish", crawler="polish_crawler")]
+SEED_LANGUAGES = [Language(id=1, display_name="Romanian", crawler="romanian_crawler", language_code="RO"), Language(
+    id=2, display_name="Polish", crawler="polish_crawler", language_code="PL")]
 
 
 def seed_data():
@@ -44,4 +47,8 @@ def seed_data():
         if not found:
             logging.info("Adding lang: {}".format(lang))
             db.session.add(lang)
+        else:
+            print('updating...')
+            Language.query.filter_by(id=lang.id).update(
+                {'display_name': lang.display_name, 'crawler': lang.crawler, 'language_code': lang.language_code})
     db.session.commit()

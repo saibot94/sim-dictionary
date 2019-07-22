@@ -10,6 +10,7 @@ def get_all_for_word(word):
     for item in data:
         lang = Language.query.get(item["language"])
         item["language_name"] = lang.display_name
+        item["language_code"] = lang.language_code
     return jsonify({"data": data})
 
 
