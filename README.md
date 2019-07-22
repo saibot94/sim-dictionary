@@ -4,6 +4,14 @@
 
 Simple scraper / dictionary app with an intuitive interface.
 
+## Migrations 
+
+To run migrations, run:
+
+```bash
+alembic upgrade head
+```
+
 ## Endpoints
 
 - `/api/translations/<word>`: get all the translations in all languages for a word
