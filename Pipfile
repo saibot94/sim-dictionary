@@ -7,7 +7,6 @@ verify_ssl = true
 pylint = "*"
 nose = "*"
 pytest = "*"
-autopep8 = "*"
 
 [packages]
 sqlalchemy = "*"
