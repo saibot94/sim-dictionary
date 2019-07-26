@@ -22,6 +22,7 @@ click = "*"
 gunicorn = "*"
 psycopg2 = "*"
 alembic = "*"
+flask-cors = "*"
 
 [pipenv]
 allow_prereleases = true
